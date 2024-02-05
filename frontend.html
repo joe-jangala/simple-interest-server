@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>Interest Calculator</title> 
+    </head>
+    <script>
+        async function interest(){
+            const principal = document.getElementById("principal").value
+            const rate =  document.getElementById("rate").value;
+            const time = document.getElementById("time").value;
+
+            const response = await fetch("http://localhost:3000/interest?principal="+principal+"&rate="+rate+"&time="+time);
+            const ans = await response.text();
+
+            document.getElementById("output").innerHTML=ans;
+
+        }
+    </script>
+
+    <body>
+        <div id="input">
+        <input id ="principal" type="text" placeholder="principal">
+        <br>
+        <input id ="rate" type = "text" placeholder="rate">
+        <br>
+        <input id="time" type = "text" placeholder="time">
+        <br>
+        <button onclick="interest()">Calculate Interest</button>
+        <div id="output"></div>
+    </div>
+        </body>
+</html>
